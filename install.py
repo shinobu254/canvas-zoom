@@ -33,7 +33,7 @@ second_required_version = "3.32.0"
 
 # Checking the Gradio version
 if version_to_tuple(current_version) < version_to_tuple(minimum_required_version):
-    print("\nPlease update webui to the latest version for the canvas-zoom extension to work properly, supported versions from 1.1 \n")
+    print("\nPlease update the panel to the latest version for the canvas-zoom extension to work properly, supported versions from 1.1 \n")
 elif version_to_tuple(current_version) <= version_to_tuple(second_required_version):
     source_dir_name = 'v1_1_v1_5_1'
     is_right_version = True
