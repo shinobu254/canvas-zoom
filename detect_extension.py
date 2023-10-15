@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-import launch
+import neko
 
 # Path to Python executable
 python = sys.executable
@@ -29,18 +29,18 @@ if os.path.isfile(config_path):
         config = json.load(config_file)
         # Check if "canvas-zoom" is in the list of disabled_extensions
         if "canvas-zoom" in config.get('disabled_extensions', []):
-            launch.run(f'"{python}" -m pip install --force-reinstall --no-deps gradio=={gradio_version}', desc=f"Uninstalling modified gradio for canvas-zoom", errdesc=f"Couldn't uninstall canvas-zoom", live=False)
+            neko.run(f'"{python}" -m pip install --force-reinstall --no-deps gradio=={gradio_version}', desc=f"Uninstalling modified gradio for canvas-zoom", errdesc=f"Couldn't uninstall canvas-zoom", live=False)
             os.remove(script_path)
 
         # Check if disable_all_extensions is not "none"
         if config.get('disable_all_extensions', 'none') == 'all':
-            launch.run(f'"{python}" -m pip install --force-reinstall --no-deps gradio=={gradio_version}', desc=f"Uninstalling modified gradio for canvas-zoom", errdesc=f"Couldn't uninstall canvas-zoom", live=False)
+            neko.run(f'"{python}" -m pip install --force-reinstall --no-deps gradio=={gradio_version}', desc=f"Uninstalling modified gradio for canvas-zoom", errdesc=f"Couldn't uninstall canvas-zoom", live=False)
             os.remove(script_path)
 
 # Check if the folder exists
 if not os.path.exists(canvasZoomPath) and gradio_version is not None:
     # If the folder does not exist and we found 'gradio' version, uninstall 'gradio' and install it again
-    launch.run(f'"{python}" -m pip install --force-reinstall --no-deps gradio=={gradio_version}', desc=f"Uninstalling modified gradio for canvas-zoom", errdesc=f"Couldn't uninstall canvas-zoom", live=False)
+    neko.run(f'"{python}" -m pip install --force-reinstall --no-deps gradio=={gradio_version}', desc=f"Uninstalling modified gradio for canvas-zoom", errdesc=f"Couldn't uninstall canvas-zoom", live=False)
 
     # Deleting the file
     os.remove(script_path)
